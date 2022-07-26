@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react';
-import ImageGrid from 'components/ImageGrid/ImageGrid';
+import Grid from 'components/Grid/Grid';
 import SEO from 'components/SEO';
+import type { Item } from 'types/Item';
 
-interface serverSideProps {
-  results: Array<object>;
+interface IProp {
+  results: Array<Item>;
 }
 
-export default function Home({ results }: serverSideProps) {
+export default function Home({ results }: IProp) {
   return (
     <div>
       <SEO title='Home' />
-      <ImageGrid cards={results} />
+      <Grid items={results} />
     </div>
   );
 }
