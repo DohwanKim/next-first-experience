@@ -5,10 +5,7 @@ interface Props {
 }
 
 const ImageCard: FC<Props> = ({ card }): React.ReactElement => {
-  console.log(card);
-  console.log('!!');
-
-  return <figure>{card}</figure>;
+  return <figure>{card.original_title}</figure>;
 };
 
 export default ImageCard;

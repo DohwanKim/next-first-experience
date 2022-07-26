@@ -1,18 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import ImageGrid from 'components/ImageGrid/ImageGrid';
-import Head from 'next/head';
+import SEO from 'components/SEO';
 
-export type Cards = Array<string>;
+interface serverSideProps {
+  results: Array<object>;
+}
 
-export default function Home() {
-  const [cards, setCards] = useState<Cards>(['1', '2', '3']);
+export default function Home({ results }: serverSideProps) {
   return (
     <div>
-      <Head>
-        <title>Home | Image Gallery</title>
-      </Head>
-      container
-      <ImageGrid cards={cards} />
+      <SEO title='Home' />
+      <ImageGrid cards={results} />
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  const { results } = await (await fetch(`http://localhost:3000/api/movies`)).json();
+
+  return {
+    props: {
+      results,
+    },
+  };
 }

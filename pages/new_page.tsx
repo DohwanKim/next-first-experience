@@ -1,12 +1,10 @@
+import SEO from 'components/SEO';
 import type { NextPage } from 'next';
-import Head from 'next/head';
 
 const newPage: NextPage = () => {
   return (
     <div>
-      <Head>
-        <title>New Page | Image Gallery </title>
-      </Head>
+      <SEO title='New Page' />
       <div>page1</div>
     </div>
   );
